@@ -1,0 +1,70 @@
+[
+  {
+    "title": "Efficient request isolation in Function-as-a-Service",
+    "authors": ["Mohamed Alzayat"],
+    "venue": "PhD Thesis. MPI-SWS and Saarland University.",
+    "year": 2023,
+    "pdf": "https://publikationen.sulb.uni-saarland.de/handle/20.500.11880/37409",
+    "abstract": "As cloud applications become increasingly event-driven, Function-as-a-Service (FaaS) is emerging as an important abstraction. FaaS allows tenants to state their application logic as stateless functions without managing the underlying infrastructure that runs and scales their applications. FaaS providers ensure the confidentiality of tenants’ data, to a limited extent, by isolating function instances from one another. However, for performance considerations, the same degree of isolation does not apply to sequential requests activating the same function instance. This compromise can lead to confidentiality breaches since bugs in a function implementation or its dependencies may retain state and leak data across activations. Moreover, platform optimizations that assume function statelessness may introduce unexpected behavior if the function retains state, jeopardizing correctness. This dissertation presents two complementary systems: Groundhog and CtxTainter. Groundhog is a black-box and programming-language-agnostic solution that enforces confidentiality by efficiently rolling back changes to a function’s state after each function activation, effectively enforcing statelessness by breaking all data flows at the request boundary. CtxTainter is a development-phase dynamic data flow analysis tool that detects data flows that violate the statelessness assumption and reports them to the developer for reviewing and fixing."
+  },
+  {
+    "title": "Groundhog: Efficient request isolation in FaaS",
+    "authors": ["Mohamed Alzayat", "Jonathan Mace", "Peter Druschel", "Deepak Garg"],
+    "short_venue": "EuroSys'23",
+    "venue": "Proceedings of the 18th European Conference on Computer Systems",
+    "year": 2023,
+    "url": "https://groundhog.mpi-sws.org/",
+    "pdf": "https://dl.acm.org/doi/pdf/10.1145/3552326.3567503",
+    "arxiv": "https://arxiv.org/pdf/2205.11458",
+    "code": "https://gitlab.mpi-sws.org/groundhog",
+    "abstract": "Security is a core responsibility for Function-as-a-Service (FaaS) providers. The prevailing approach isolates concurrent executions of functions in separate containers. However, successive invocations of the same function commonly reuse the runtime state of a previous invocation in order to avoid container cold-start delays. Although efficient, this container reuse has security implications for functions that are invoked on behalf of differently privileged users or administrative domains: bugs in a function's implementation --- or a third-party library/runtime it depends on --- may leak private data from one invocation of the function to a subsequent one. <br> Groundhog isolates sequential invocations of a function by efficiently reverting to a clean state, free from any private data, after each invocation. The system exploits two properties of typical FaaS platforms: each container executes at most one function at a time and legitimate functions do not retain state across invocations. This enables Groundhog to efficiently snapshot and restore function state between invocations in a manner that is independent of the programming language/runtime and does not require any changes to existing functions, libraries, language runtimes, or OS kernels. We describe the design and implementation of Groundhog and its integration with OpenWhisk, a popular production-grade open-source FaaS framework. On three existing benchmark suites, Groundhog isolates sequential invocations with modest overhead on end-to-end latency (median: 1.5%, 95p: 7%) and throughput (median: 2.5%, 95p: 49.6%), relative to an insecure baseline that reuses the container and runtime state."
+  },
+  {
+    "title": "Pacer: Comprehensive Network Side-Channel Mitigation in the Cloud",
+    "authors": ["Aastha Mehta", "Mohamed Alzayat", "Roberta De Viti", "Björn B. Brandenburg", "Peter Druschel", "Deepak Garg"],
+    "short_venue": "USENIX Security'22",
+    "venue": "Proceedings of the 31st USENIX Security Symposium USENIX Security",
+    "year": 2022,
+    "pdf": "https://www.usenix.org/system/files/sec22fall_mehta.pdf",
+    "code": "https://gitlab.mpi-sws.org/pacer",
+    "arxiv": "https://arxiv.org/abs/1908.11568",
+    "abstract": "Network side channels (NSCs) leak secrets through packet timing and packet sizes. They are of particular concern in public IaaS Clouds, where any tenant may be able to colocate and indirectly observe a victim's traffic shape. We present Pacer, the first system that eliminates NSC leaks in public IaaS Clouds end-to-end. It builds on the principled technique of shaping guest traffic outside the guest to make the traffic shape independent of secrets by design. However, Pacer also addresses important concerns that have not been considered in prior work—it prevents internal side-channel leaks from affecting reshaped traffic, and it respects network flow control, congestion control and loss recovery signals. Pacer is implemented as a paravirtualizing extension to the host hypervisor, requiring modest changes to the hypervisor and the guest kernel and optional, minimal changes to applications. We present Pacer's key abstraction of a cloaked tunnel, describe its design and implementation, and show through an experimental evaluation that Pacer imposes moderate overheads on bandwidth, client latency, and server throughput, while thwarting attacks using state-of-the-art CNN classifiers."
+  },
+  {
+    "title": "Selfish & opaque transaction ordering in the Bitcoin blockchain: the case for chain neutrality",
+    "authors": ["Johnnatan Messias", "Mohamed Alzayat", "Balakrishnan Chandrasekaran", "Krishna P. Gummadi", "Patrick Loiseau", "Alan Mislove"],
+    "short_venue": "ACM IMC'21",
+    "venue": "Proceedings of the 21st ACM Internet Measurement Conference",
+    "year": 2021,
+    "pdf": "https://johnnatan-messias.github.io/pdf/papers/messias_imc2021_btc_tx_ordering.pdf",
+    "code": "https://github.com/johnnatan-messias/blockchain-transaction-ordering/",
+    "abstract": "Most public blockchain protocols, including the popular Bitcoin and Ethereum blockchains, do not formally specify the order in which miners should select transactions from the pool of pending (or uncommitted) transactions for inclusion in the blockchain. Over the years, informal conventions or \"norms\" for transaction ordering have, however, emerged via the use of shared software by miners, e.g., the GetBlockTemplate (GBT) mining protocol in Bitcoin Core. Today, a widely held view is that Bitcoin miners prioritize transactions based on their offered \"transaction fee-per-byte.\" Bitcoin users are, consequently, encouraged to increase the fees to accelerate the commitment of their transactions, particularly during periods of congestion. In this paper, we audit the Bitcoin blockchain and present statistically significant evidence of mining pools deviating from the norms to accelerate the commitment of transactions for which they have (i) a selfish or vested interest, or (ii) received dark-fee payments via opaque (non-public) side-channels. As blockchains are increasingly being used as a record-keeping substrate for a variety of decentralized (financial technology) systems, our findings call for an urgent discussion on defining neutrality norms that miners must adhere to when ordering transactions in the chains. Finally, we make our data sets and scripts publicly available."
+  },
+  {
+    "title": "Modeling coordinated vs. P2P mining: An analysis of inefficiency and inequality in proof-of-work blockchains",
+    "authors": ["Mohamed Alzayat", "Johnnatan Messias", "Balakrishnan Chandrasekaran", "Krishna P. Gummadi", "Patrick Loiseau"],
+    "venue": "arXiv'21",
+    "year": 2021,
+    "arxiv": "https://arxiv.org/abs/2106.02970",
+    "code": "https://github.com/Zayat/blockchain-models-simulator",
+    "abstract": "We study efficiency in a proof-of-work blockchain with non-zero latencies, focusing in particular on the (inequality in) individual miners' efficiencies. Prior work attributed differences in miners' efficiencies mostly to attacks, but we pursue a different question: Can inequality in miners' efficiencies be explained by delays, even when all miners are honest? Traditionally, such efficiency-related questions were tackled only at the level of the overall system, and in a peer-to-peer (P2P) setting where miners directly connect to one another. Despite it being common today for miners to pool compute capacities in a mining pool managed by a centralized coordinator, efficiency in such a coordinated setting has barely been studied. In this paper, we propose a simple model of a proof-of-work blockchain with latencies for both the P2P and the coordinated settings. We derive a closed-form expression for the efficiency in the coordinated setting with an arbitrary number of miners and arbitrary latencies, both for the overall system and for each individual miner. We leverage this result to show that inequalities arise from variability in the delays, but that if all miners are equidistant from the coordinator, they have equal efficiency irrespective of their compute capacities. We then prove that, under a natural consistency condition, the overall system efficiency in the P2P setting is higher than that in the coordinated setting. Finally, we perform a simulation-based study to demonstrate that even in the P2P setting delays between miners introduce inequalities, and that there is a more complex interplay between delays and compute capacities."
+  },
+  {
+    "title": "On Blockchain Commit Times: An analysis of how miners choose Bitcoin transactions",
+    "authors": ["Johnnatan Messias", "Mohamed Alzayat", "Balakrishnan Chandrasekaran", "Krishna P. Gummadi"],
+    "short_venue": "SDBD'20",
+    "venue": "Proceedings of the 2nd International KDD Workshop on Smart Data for Blockchain and Distributed Ledger",
+    "year": 2020,
+    "pdf": "https://johnnatan-messias.github.io/pdf/papers/messias-sdbd-20.pdf",
+    "abstract": "Blockchains suffer from a well-known, non-trivial scalability problem: The low throughput (i.e., transactions committed per unit time) of blockchains when paired with the increasingly high volume of issued transactions leads to significant delays in transaction commit times. In a month-long investigation of Bitcoin, we reveal that congestion (i.e., when there exist more transactions than can be included in a block) is typical and that commit times exhibit a significant variance during periods of congestion. Although the fee-per-byte dequeuing policy is widely considered the \"norm\" for prioritizing transactions — and explaining how and when transactions are committed — we show that miners somehow delay a significant fraction of transactions. Such deviations undermine the utility of blockchains for ensuring a \"fair\" ordering that might be required for some applications."
+  },
+  {
+    "title": "Polsim: Automatic policy validation via meta-data flow simulation",
+    "authors": ["Mohamed Alzayat"],
+    "venue": "Masters Thesis. MPI-SWS and Saarland University.",
+    "year": 2016,
+    "pdf": "https://www.mpi-sws.org/tr/2016-005.pdf",
+    "technical_report": "assets/files/publications/polSimPaper_2017.pdf",
+    "abstract": "Every year millions of confidential data records are leaked accidentally due to bugs, misconfiguration, or operator error in large, complex, and fast evolving data processing systems. Ensuring compliance with data policies is a major challenge. Thoth is an information flow control system that uses coarse-grained taint tracking to control the flow of data, and to enforce relevant declarative policies at processes boundaries, regardless of bugs, misconfiguration, and compromises in application code, or actions by unprivileged operators. However, designing policies that make sure all and only compliant flows are allowed remains a complex and error prone process. In this thesis, we introduce PolSim, a simulation tool that aids system policy designers by validating the provided policies and systematically ensuring that the system allows all and only expected flows. Our proposed simulator approximates the dynamic run time environment, semi-automatically suggests internal flow policies based on data flow and provides debugging hints to help policy designers develop a working policy for the intended system before deployment."
+  }
+]

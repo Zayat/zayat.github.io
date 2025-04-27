@@ -1,0 +1,521 @@
+/* -------------------------------------- */
+/* 1. Root Variables */
+/* -------------------------------------- */
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --text-primary: #2d3436;
+    --text-secondary: #636e72;
+    --accent: #0984e3;
+    --border: #dfe6e9;
+}
+
+[data-theme="dark"] {
+    --bg-primary: #121212;
+    --bg-secondary: #1d1d1d;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --accent: #76c7c0;
+    --border: #2d2d2d;
+}
+
+/* -------------------------------------- */
+/* 2. Base Styles */
+/* -------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* -------------------------------------- */
+/* 3. Layout Components */
+/* -------------------------------------- */
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    background-color: var(--bg-secondary);
+    padding: 60px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-content .tagline{
+    gap:0;
+}
+
+.profile-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--accent);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+.title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding-bottom: 1rem;
+}
+
+.tagline {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-top: 0.05rem;
+    font-style: italic;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Main Content */
+main {
+    padding: 0 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+.main-content {
+    width: 100%;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Sections */
+section {
+    background: var(--bg-secondary);
+    margin-bottom: 30px;
+    margin-top: 30px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* -------------------------------------- */
+/* 4. Theme Toggle */
+/* -------------------------------------- */
+.theme-toggle {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* -------------------------------------- */
+/* 5. Typography */
+/* -------------------------------------- */
+h2 {
+    color: var(--accent);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.about p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Lists */
+ul {
+    list-style: none;
+}
+
+ul li {
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+    padding-left: 20px;
+    position: relative;
+}
+
+ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    padding-left: 5px;
+    color: var(--accent);
+}
+
+/* -------------------------------------- */
+/* 6. Links and Icons */
+/* -------------------------------------- */
+.contact {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+    margin-top: 2rem;
+}
+
+.social-link {
+    color: var(--text-secondary);
+    transition: color .2s ease;
+    text-decoration: none;
+
+}
+
+.social-link:hover {
+    color: var(--accent)
+}
+
+.social-link span {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.icon-link {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.icon-link:hover {
+    transform: translateY(-2px);
+    color: var(--accent);
+}
+
+.author-link {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.author-link:hover {
+    text-decoration: underline;
+}
+
+
+/* -------------------------------------- */
+/* 7. About */
+/* -------------------------------------- */
+.about {
+    margin-bottom: 40px;
+    background: var(--bg-secondary);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.about p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1.5em;
+}
+
+.about p:last-of-type {
+    margin-bottom: 2em;
+}
+
+/* -------------------------------------- */
+/* 8. Publications */
+/* -------------------------------------- */
+.publication-item {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.publication-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.publication-item h3 {
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.publication-item p {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+/* Publication Title Row */
+.title-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+    margin-bottom: 10px;
+}
+
+.title-button {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: var(--text-primary);
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    transition: color 0.2s ease;
+}
+
+.title-button:hover {
+    color: var(--accent);
+}
+
+.pub-title {
+    margin: 0;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    padding-left: 1px;
+    flex-grow: 1;
+    color: var(--text-primary);
+}
+
+/* Authors */
+.pub-authors {
+    color: var(--text-secondary);
+    margin: 8px 0;
+}
+
+/* Links */
+.publication-links {
+    display: flex;
+    gap: 12px;
+    margin: 12px 0;
+    flex-wrap: wrap;
+}
+
+.pub-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: var(--bg-primary);
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    border: 1px solid var(--border);
+}
+
+.pub-link:hover {
+    background: var(--accent);
+    color: var(--bg-primary);
+    transform: translateY(-1px);
+}
+
+/* Publication Actions */
+.publication-actions {
+    display: flex;
+    gap: 12px;
+    margin: 15px 0;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    gap: 6px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    background: var(--bg-primary);
+    color: var(--accent);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.action-btn:hover,
+.action-btn.active {
+    background: var(--accent);
+    color: var(--bg-primary);
+    transform: translateY(-2px);
+}
+
+.action-btn-wide {
+    width: auto;  
+    padding: 0 12px;
+}
+
+.action-btn-wide .arxiv-icon {
+    margin-right: 4px;
+}
+
+.action-icon {
+    font-size: 1.1rem;
+}
+
+/* Abstract Section */
+.abstract-container {
+    margin-top: 15px;
+    border-top: 1px solid var(--border);
+    padding-top: 15px;
+}
+
+.abstract {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    background: var(--bg-primary);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.abstract.show {
+    display: block;
+}
+
+.venue-short.hidden {
+    display: none;
+}
+
+.venue-full {
+    display: none;
+}
+
+.venue-full.show {
+    display: inline;
+}
+
+/* Abstract Toggle */
+.abstract-toggle {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+    width: 16px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.toggle-container {
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: 3px; /* Adjust as needed to align with the first line of text */
+}
+
+.abstract-toggle::before {
+    content: "▸";
+    position: relative;
+    left: -2px;
+    transition: transform 0.3s ease;
+}
+
+.abstract-toggle.active::before {
+    transform: rotate(90deg);
+}
+
+/* -------------------------------------- */
+/* 8. Teaching */
+/* -------------------------------------- */
+.teaching-position {
+    padding-left: 20px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.teaching-position::before {
+    position: absolute;
+    left: 5px;
+    color: var(--text-secondary);
+}
+
+.courses-list {
+    padding-top: 10px;
+}
+
+/* -------------------------------------- */
+/* 9. Responsive Design */
+/* -------------------------------------- */
+@media (max-width: 768px) {
+    .about {
+        padding: 20px;
+    }
+    
+    .container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .profile-img {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (min-width: 1024px) {
+    main {
+        grid-template-columns: 2fr 1fr;
+    }
+}
